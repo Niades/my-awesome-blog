@@ -12,6 +12,7 @@ import 'restangular';
 import 'styles/global.css';
 
 import MainController from './controllers/MainController.js';
+import LoginController from './controllers/LoginController.js';
 
 import ConfigFn from './config.js';
 import RunFn from './run.js';
@@ -23,6 +24,7 @@ angular
     )
 
     .controller('MainController', MainController)
+    .controller('LoginController', LoginController)
 
     .config(ConfigFn)
 

@@ -1,0 +1,18 @@
+.page-header
+    h3 Страница логина
+form.form
+    .form-group(ng-if="errorMsg")
+        label(style="color: red;")
+            | {{ errorMsg }}
+    .form-group
+        label
+            | Имя пользователя
+        input.form-control(ng-model='credentials.username')
+
+    .form-group
+        label
+            | Пароль
+        input.form-control(type="password", ng-model='credentials.password')
+    .form-group
+        button.btn.btn-success(ng-click="login()")
+            | Войти
