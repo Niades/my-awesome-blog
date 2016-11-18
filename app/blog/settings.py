@@ -78,7 +78,12 @@ WSGI_APPLICATION = 'blog.wsgi.application'
 
 import dj_database_url
 
-DATABASES = {'default': dj_database_url.config(default='')}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'db'
+    }
+}
 
 
 # Password validation
