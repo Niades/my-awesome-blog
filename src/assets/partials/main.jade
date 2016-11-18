@@ -21,3 +21,12 @@
                 | Привет, {{ currentUser.username }}!
     .container
         div(ui-view)
+          div(ng-repeat="entry in entries")
+            h3 {{ entry.title }}
+            span(ng-if="entry.body.length > 200")
+              p {{ entry.body | limitTo : 200 }}...
+            span(ng-if="entry.body.length <= 200")
+              p {{ entry.body }}
+            span {{ entry.created_on }} 
+            a(ui-sref="main.entry-details({ id: entry.id })")
+              | Комментировать
