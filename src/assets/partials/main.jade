@@ -12,7 +12,9 @@
           ul.nav.navbar-nav
             //li(ui-sref='main.clients', ui-sref-active='active')
             //  a Clients
-            li(ng-if="isAuthenticated")
+            li(ng-if='!isAuthenticated', ui-sref='main.login', ui-sref-active='active')
+              a Войти
+            li(ng-if='isAuthenticated')
               a 
                 | Привет, {{ currentUser.username }}!
     .container

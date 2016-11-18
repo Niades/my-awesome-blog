@@ -19,7 +19,11 @@ def login_view(request):
         user = authenticate(username=username, password=password)
         if user is not None:
             login(request, user)
-            return Response({ 'status': 'ok' })
+            return Response(
+                    UserSerializer(
+                        request.user
+                    ).data
+                )
         else:
             return Response({ 'status': 'error', 'msg': 'Неправильный логин или пароль' })
     else:

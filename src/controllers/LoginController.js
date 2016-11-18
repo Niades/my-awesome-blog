@@ -1,16 +1,14 @@
-function LoginController($scope, $state, Restangular) {
+function LoginController($scope, $state, AuthService, Restangular) {
     $scope.credentials = {};
     $scope.login = () => {
-        Restangular
-            .all('login')
-            .customPOST($scope.credentials)
-            .then((response) => {
-                if(response.status === 'ok') {
-                    $state.go('main');
-                } else {
+        AuthService
+            .login($scope.credentials)
+            .then(
+                () => $state.go('main'),
+                (response) => {
                     $scope.errorMsg = response.msg;
                 }
-            });
+            );
     };
 };
 
