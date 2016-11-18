@@ -22,5 +22,13 @@ export default [
             controller: 'AddEntryController',
             template: require('partials/add-entry.jade')
         }
+    },
+    {
+        name: 'main.entry-details',
+        data: {
+            url: 'entry/:id',
+            controller: 'EntryDetailsController',
+            template: require('partials/entry-details.jade')
+        }
     }
 ];
