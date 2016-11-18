@@ -11,5 +11,6 @@ urlpatterns = [
     url(r'^$', views.IndexView.as_view()),
     url(r'^api/v1/', include(router.urls)),
     url(r'^api/v1/login', views.login_view),
+    url(r'^api/v1/profile', views.profile_view),
 ]
 urlpatterns += staticfiles_urlpatterns()

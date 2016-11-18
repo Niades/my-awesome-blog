@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login
 from rest_framework import viewsets, status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-# from .serializers import ExampleSerializer
+from .serializers import UserSerializer
 # from .models import Example
 
 
@@ -24,6 +24,17 @@ def login_view(request):
             return Response({ 'status': 'error', 'msg': 'Неправильный логин или пароль' })
     else:
         return Response({ 'status': 'error', 'msg': 'Проверьте правильность заполнения полей' })
+
+@api_view(['GET'])
+def profile_view(request):
+    if request.user.is_authenticated():
+        return Response(
+            UserSerializer(
+                request.user
+            ).data
+        )
+    else:
+        return Response({ "status": "error", "msg": "Вы не вошли." })
 
 """
 class ExampleViewSet(viewsets.ModelViewSet):
