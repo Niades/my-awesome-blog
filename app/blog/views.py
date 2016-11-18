@@ -3,8 +3,8 @@ from django.contrib.auth import authenticate, login
 from rest_framework import viewsets, status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .serializers import UserSerializer
-# from .models import Example
+from .serializers import UserSerializer, BlogEntrySerializer
+from .models import BlogEntry
 
 
 class IndexView(TemplateView):
@@ -39,6 +39,11 @@ def profile_view(request):
         )
     else:
         return Response({ "status": "error", "msg": "Вы не вошли." })
+
+
+class BlogEntryViewSet(viewsets.ModelViewSet):
+    queryset = BlogEntry.objects.all()
+    serializer_class = BlogEntrySerializer
 
 """
 class ExampleViewSet(viewsets.ModelViewSet):

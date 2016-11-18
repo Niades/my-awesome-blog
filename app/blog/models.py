@@ -1,6 +1,12 @@
 """Module containing all the project models."""
 from django.db import models
 
+
+class BlogEntry(models.Model):
+    title = models.CharField('Title', max_length=128)
+    body = models.TextField('Body')
+    created_on = models.DateTimeField('Created on', auto_now=True)
+
 """
 class Example(models.Model):
 

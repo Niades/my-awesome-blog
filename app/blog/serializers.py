@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-# from .models import Example
+from .models import BlogEntry
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -8,6 +8,12 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = '__all__'
         extra_kwargs = {'password': {'write_only': True}}
+
+
+class BlogEntrySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = BlogEntry
+        fields = '__all__'
 
 """
 class PlaylistSerializer(serializers.ModelSerializer):

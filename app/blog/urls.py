@@ -5,6 +5,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 
 router = routers.DefaultRouter()
+router.register('blog-entry', views.BlogEntryViewSet)
 
 
 urlpatterns = [
