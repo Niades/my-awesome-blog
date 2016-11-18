@@ -3,8 +3,8 @@ from django.contrib.auth import authenticate, login
 from rest_framework import viewsets, status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .serializers import UserSerializer, BlogEntrySerializer
-from .models import BlogEntry
+from .serializers import UserSerializer, BlogEntrySerializer, EntryCommentSerializer
+from .models import BlogEntry, EntryComment
 
 
 class IndexView(TemplateView):
@@ -44,6 +44,11 @@ def profile_view(request):
 class BlogEntryViewSet(viewsets.ModelViewSet):
     queryset = BlogEntry.objects.all()
     serializer_class = BlogEntrySerializer
+
+
+class EntryCommentViewSet(viewsets.ModelViewSet):
+    queryset = EntryComment.objects.all()
+    serializer_class = EntryCommentSerializer
 
 """
 class ExampleViewSet(viewsets.ModelViewSet):

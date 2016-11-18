@@ -7,6 +7,13 @@ class BlogEntry(models.Model):
     body = models.TextField('Body')
     created_on = models.DateTimeField('Created on', auto_now=True)
 
+
+class EntryComment(models.Model):
+    text = models.TextField('Text')
+    created_on = models.DateTimeField('Created on', auto_now=True)
+    author = models.CharField('Author username', max_length=128)
+    entry = models.ForeignKey('BlogEntry', related_name='comments')
+
 """
 class Example(models.Model):
 

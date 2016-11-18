@@ -4,3 +4,19 @@
 p {{ entry.body }}
 
 span {{ entry.created_on }}
+
+div.comments
+    h4 Комментарии
+    div(ng-repeat="comment in entry.comments")
+        div
+            b {{ comment.author }} 
+            span написал в {{ comment.created_on }}
+        div
+            p {{ comment.text }}
+        hr
+
+div.new-comment
+    textarea.form-control(ng-model="newComment.text")
+    button.btn.btn-success(ng-click="addComment()")
+        | Добавить комментарий 
+        i.glyphicon.glyphicon-plus

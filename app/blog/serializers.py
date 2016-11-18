@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from .models import BlogEntry
+from .models import BlogEntry, EntryComment
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -10,10 +10,25 @@ class UserSerializer(serializers.ModelSerializer):
         extra_kwargs = {'password': {'write_only': True}}
 
 
+class EntryCommentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = EntryComment
+        fields = '__all__'
+        extra_kwargs = {'author': {'required': False}}
+
+    def create(self, validated_data):
+        validated_data['author'] = self.context['request'].user.username
+        comment = EntryComment.objects.create(**validated_data)
+        comment.save()
+        return comment
+
+
 class BlogEntrySerializer(serializers.ModelSerializer):
     class Meta:
         model = BlogEntry
         fields = '__all__'
+
+    comments = EntryCommentSerializer(many=True)
 
 """
 class PlaylistSerializer(serializers.ModelSerializer):
