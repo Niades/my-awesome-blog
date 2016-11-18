@@ -13,6 +13,7 @@ import 'styles/global.css';
 
 import MainController from './controllers/MainController.js';
 import LoginController from './controllers/LoginController.js';
+import AddEntryController from './controllers/AddEntryController.js';
 
 import AuthService from './services/AuthService.js';
 
@@ -27,6 +28,7 @@ angular
 
     .controller('MainController', MainController)
     .controller('LoginController', LoginController)
+    .controller('AddEntryController', AddEntryController)
 
     .service('AuthService', AuthService)
 

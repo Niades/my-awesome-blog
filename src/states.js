@@ -14,5 +14,13 @@ export default [
             controller: 'LoginController',
             template: require('partials/login.jade')
         }
+    },
+    {
+        name: 'main.new-entry',
+        data: {
+            url: 'new-entry',
+            controller: 'AddEntryController',
+            template: require('partials/add-entry.jade')
+        }
     }
 ];

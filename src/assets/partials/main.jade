@@ -12,6 +12,8 @@
           ul.nav.navbar-nav
             //li(ui-sref='main.clients', ui-sref-active='active')
             //  a Clients
+            li(ng-if='isAuthenticated', ui-sref='main.new-entry', ui-sref-active='active')
+              a Добавить запись
             li(ng-if='!isAuthenticated', ui-sref='main.login', ui-sref-active='active')
               a Войти
             li(ng-if='isAuthenticated')

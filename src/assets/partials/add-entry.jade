@@ -1,0 +1,18 @@
+.page-header
+    h3 Новая запись
+
+form.form
+    .form-group
+        label
+            | Заголовок
+        input.form-control(ng-model="entry.title")
+
+    .form-group
+        label
+            | Текст
+        textarea.form-control(ng-model="entry.body")
+
+    .form-group
+        button.btn.btn-success(ng-click="save()")
+            | Добавить запись 
+            i.glyphicon.glyphicon-plus
