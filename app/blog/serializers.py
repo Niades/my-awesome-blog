@@ -18,6 +18,8 @@ class EntryCommentSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         validated_data['author'] = self.context['request'].user.username
+        if validated_data['author'] == '':
+            validated_data['author'] = 'Аноним'
         comment = EntryComment.objects.create(**validated_data)
         comment.save()
         return comment
@@ -28,7 +30,7 @@ class BlogEntrySerializer(serializers.ModelSerializer):
         model = BlogEntry
         fields = '__all__'
 
-    comments = EntryCommentSerializer(many=True)
+    comments = EntryCommentSerializer(many=True, required=False)
 
 """
 class PlaylistSerializer(serializers.ModelSerializer):
