@@ -12,7 +12,14 @@
 npm i
 pip install -r requirements.txt
 ```
-
+Теперь запускаем миграции для БД:
+```
+python app/manage.py migrate
+```
+Создаем суперпользователя:
+```
+python app/manage.py createsuperuser
+```
 После этого можно запускать проект. Для запуска сборщика статики:
 
 ```
